@@ -75,8 +75,11 @@ for link in links[25:155]:
             nombre2 = line.find_element_by_tag_name(
                 'td').find_element_by_tag_name('a').text
         except:
-            nombre2 = line.find_element_by_tag_name(
-                'td').text
+            try:
+                nombre2 = line.find_element_by_tag_name(
+                    'td').text
+            except:
+                nombre2 = "NoMail"
         #print(nombre1, nombre2)
         #print(nombre1, nombre2)
         datos[nombre1] = nombre2
