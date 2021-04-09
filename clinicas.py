@@ -30,11 +30,12 @@ for url in urls:
 
 centros = []
 i = 0
-for link in links[25:155]:
+h = 1
+for link in links:
     datos = {}
     driver.get(link)
-    time.sleep(5)
-    print(i, driver.find_element_by_class_name('titulo').text)
+    time.sleep(3)
+    print(h, driver.find_element_by_class_name('titulo').text)
     #datos['centro'] = driver.find_element_by_class_name('titulo').text
     elementos = []
     for j, item in enumerate(driver.find_element_by_id('accordion').find_elements_by_class_name('panel.panel-default')):
@@ -56,7 +57,7 @@ for link in links[25:155]:
     datos['URL'] = link
 
     driver.get(link)
-    time.sleep(5)
+    time.sleep(3)
 
     items = driver.find_element_by_id(
         'accordion').find_elements_by_class_name('panel.panel-default')
@@ -64,13 +65,13 @@ for link in links[25:155]:
 
     #representante = {}
 
-    for i, line in enumerate(items[elementos[1]].find_elements_by_tag_name('tr')):
+    for j, line in enumerate(items[elementos[1]].find_elements_by_tag_name('tr')):
         #print(i, line.text)
         try:
             nombre1 = 'Repr_Leg_' + line.find_element_by_tag_name(
                 'th').text
         except:
-            print(i, "no", line.get_attribute('innerHTML'))
+            print(j, "no", line.get_attribute('innerHTML'))
         try:
             nombre2 = line.find_element_by_tag_name(
                 'td').find_element_by_tag_name('a').text
@@ -94,6 +95,7 @@ for link in links[25:155]:
         i = 0
     # time.sleep(10)
     i += 1
+    h += 1
 
 
 file = pd.DataFrame(centros).to_excel('test.xlsx', index=False)
