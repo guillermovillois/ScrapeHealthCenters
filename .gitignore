@@ -1,0 +1,6 @@
+*.ipynb
+*.ipynb*
+*.xlsx
+venv
+__pycache__/
+executable/
