@@ -30,11 +30,11 @@ for url in urls:
 
 centros = []
 i = 0
-for link in links[:105]:
+for link in links[25:155]:
     datos = {}
     driver.get(link)
     time.sleep(5)
-    print(driver.find_element_by_class_name('titulo').text)
+    print(i, driver.find_element_by_class_name('titulo').text)
     #datos['centro'] = driver.find_element_by_class_name('titulo').text
     elementos = []
     for j, item in enumerate(driver.find_element_by_id('accordion').find_elements_by_class_name('panel.panel-default')):
@@ -66,8 +66,11 @@ for link in links[:105]:
 
     for i, line in enumerate(items[elementos[1]].find_elements_by_tag_name('tr')):
         #print(i, line.text)
-        nombre1 = 'Repr_Leg_' + line.find_element_by_tag_name(
-            'th').text
+        try:
+            nombre1 = 'Repr_Leg_' + line.find_element_by_tag_name(
+                'th').text
+        except:
+            print(i, "no", line.get_attribute('innerHTML'))
         try:
             nombre2 = line.find_element_by_tag_name(
                 'td').find_element_by_tag_name('a').text
@@ -86,7 +89,7 @@ for link in links[:105]:
         file = pd.DataFrame(centros).to_excel('test.xlsx', index=False)
         send_email('test.xlsx')
         i = 0
-    time.sleep(10)
+    # time.sleep(10)
     i += 1
 
 
