@@ -30,7 +30,7 @@ for url in urls:
 
 centros = []
 i = 0
-for link in links[:5]:
+for link in links[:105]:
     datos = {}
     driver.get(link)
     time.sleep(5)
