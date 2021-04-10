@@ -1,0 +1,1 @@
+#Python script that scrape a government health ministry and extracts all the details of every Health Center in the country, once all the data is scraped, it send an email with the data attached. Uses Selenium for scraping, pandas for exporting the data into an Excel file and smtplib for sending the email

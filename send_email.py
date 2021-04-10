@@ -1,4 +1,5 @@
-import smtplib, ssl
+import smtplib
+import ssl
 from email.mime.text import MIMEText
 from email.utils import formataddr
 from email.mime.multipart import MIMEMultipart
@@ -11,16 +12,16 @@ with open("cosas.json") as f:
 
 
 def send_email(file):
-    sender_email = "gmvillois@gmail.com"
-    sender_name = "GuillermoV"
+    sender_email = data['sender_email']
+    sender_name = data['sender_name']
 
-    receiver_email = "guillearg@gmail.com"
-    receiver_name = "Guille"
+    receiver_email = data['receiver_email']
+    receiver_name = data['receiver_name']
 
     filename = file
 
     email_body = """
-    <h1>Hi Gareth, Attached is the most up to date data form ItsRugby.co.uk </h1>"""
+    <h1> Hi, today's document is attached </h1>"""
 
     print("Sending the email....")
 
@@ -28,7 +29,7 @@ def send_email(file):
     msg = MIMEMultipart()
     msg["To"] = formataddr((receiver_name, receiver_email))
     msg["From"] = formataddr((sender_name, sender_email))
-    msg["Subject"] = "Hello, my firend " + receiver_name
+    msg["Subject"] = "Document" + receiver_name
 
     msg.attach(MIMEText(email_body, "html"))
 
