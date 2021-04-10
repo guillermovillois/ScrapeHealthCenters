@@ -1,9 +1,5 @@
 cosas.json
-*.ipynb
-*.ipynb*
 *.xlsx
 *.json
-venv
+
 __pycache__/
-executable/
-Procfile*
