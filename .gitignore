@@ -1,5 +1,3 @@
-cosas.json
+__pycache__
 *.xlsx
 *.json
-
-__pycache__/
